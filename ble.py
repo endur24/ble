@@ -11,24 +11,31 @@ logger = logging.getLogger(__name__)
 
 
 async def main():
-    print("Scanning...")
-    devices = await BleakScanner.discover()
-    for device in devices:
-        # print(device.address, device.name)
-        #d.details = {'path': '/org/bluez/hci0/dev_DE_BD_78_CF_7E_CB', 'props': {'Address': 'DE:BD:78:CF:7E:CB', 'AddressType': 'random', 'Name': 'ID115Plus HR', 'Alias': 'ID115Plus HR', 'Paired': False, 'Trusted': False, 'Blocked': False, 'LegacyPairing': False, 'Connected': False, 'UUIDs': ['00000af0-0000-1000-8000-00805f9b34fb', '00001800-0000-1000-8000-00805f9b34fb', '00001801-0000-1000-8000-00805f9b34fb'], 'Adapter': '/org/bluez/hci0', 'ServicesResolved': False, 'RSSI': -48}}
-        print("Details ------->: ", device.details)
-        # address = device.address
-        # if device.address == "DE:BD:78:CF:7E:CB":
-        #     #ID115plus HR
-        #     MODEL_NBR_UUID = "00000af0-0000-1000-8000-00805f9b34fb" #"00002a24-0000-1000-8000-00805f9b34fb"
-        #     print("Good one")
-        #     async with BleakClient(address) as client:
-        #         # model_number = await client.read_gatt_char(MODEL_NBR_UUID)
-        #         # print("Model Number: {0}".format("".join(map(chr, model_number))))
+	print("Scanning...")
+	devices = await BleakScanner.discover()
+	for device in devices:
+		print(device.address, device.name)
+		#d.details = {'path': '/org/bluez/hci0/dev_DE_BD_78_CF_7E_CB', 'props': {'Address': 'DE:BD:78:CF:7E:CB', 'AddressType': 'random', 'Name': 'ID115Plus HR', 'Alias': 'ID115Plus HR', 'Paired': False, 'Trusted': False, 'Blocked': False, 'LegacyPairing': False, 'Connected': False, 'UUIDs': ['00000af0-0000-1000-8000-00805f9b34fb', '00001800-0000-1000-8000-00805f9b34fb', '00001801-0000-1000-8000-00805f9b34fb'], 'Adapter': '/org/bluez/hci0', 'ServicesResolved': False, 'RSSI': -48}}
+		# print("Details ------->: ", device.details)
+		# address = device.address
+		# async with BleakClient(address) as client:
+		# 	print(device.address, device.name)
+		# 	async with BleakClient(device, timeout=60, use_cached=False) as client:
 
-        #         print("Services:")
-        #         for service in client.services:
-        #             print(service)
+
+
+		# address = device.address
+		# if device.address == "DE:BD:78:CF:7E:CB":
+		#     #ID115plus HR
+		#     MODEL_NBR_UUID = "00000af0-0000-1000-8000-00805f9b34fb" #"00002a24-0000-1000-8000-00805f9b34fb"
+		#     print("Good one")
+		#     async with BleakClient(address) as client:
+		#         # model_number = await client.read_gatt_char(MODEL_NBR_UUID)
+		#         # print("Model Number: {0}".format("".join(map(chr, model_number))))
+
+		#         print("Services:")
+		#         for service in client.services:
+		#             print(service)
 
 asyncio.run(main())
 
