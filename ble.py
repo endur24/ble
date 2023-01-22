@@ -20,20 +20,20 @@ async def main():
 		print("Details ------->: ", device.details)
 
 		###
-		# async with BleakClient(device, timeout=60, use_cached=False) as client:
-		# 	services = await client.get_services()
-		# 	for service in services:
-		# 		print('\nservice', service.handle, service.uuid, service.description)
+		async with BleakClient(device, timeout=60, use_cached=False) as client:
+			services = await client.get_services()
+			for service in services:
+				print('\nservice', service.handle, service.uuid, service.description)
 
-		# 		characteristics = service.characteristics
+				characteristics = service.characteristics
 
-		# 		for char in characteristics:
-		# 			print('  characteristic', char.handle, char.uuid, char.description, char.properties)
+				for char in characteristics:
+					print('  characteristic', char.handle, char.uuid, char.description, char.properties)
 
-		# 			descriptors = char.descriptors
+					descriptors = char.descriptors
 
-		# 			for desc in descriptors:
-		# 				print('    descriptor', desc)
+					for desc in descriptors:
+						print('    descriptor', desc)
 
 		####
 
