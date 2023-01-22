@@ -9,36 +9,43 @@ logger = logging.getLogger(__name__)
 
 
 
+# def process_device(device):
 
-async def main():
+
+
+async def main(address = None):
 	print("Scanning...")
-	devices = await BleakScanner.discover()
-	for device in devices:
-		print("...................................................")
-		print(device.address, device.name)
-		#d.details = {'path': '/org/bluez/hci0/dev_DE_BD_78_CF_7E_CB', 'props': {'Address': 'DE:BD:78:CF:7E:CB', 'AddressType': 'random', 'Name': 'ID115Plus HR', 'Alias': 'ID115Plus HR', 'Paired': False, 'Trusted': False, 'Blocked': False, 'LegacyPairing': False, 'Connected': False, 'UUIDs': ['00000af0-0000-1000-8000-00805f9b34fb', '00001800-0000-1000-8000-00805f9b34fb', '00001801-0000-1000-8000-00805f9b34fb'], 'Adapter': '/org/bluez/hci0', 'ServicesResolved': False, 'RSSI': -48}}
-		print("Details ------->: ", device.details)
+	# if not address:
+	# 	devices = await BleakScanner.discover()
+	# else:
+	device = await BleakScanner.find_device_by_address(address, timeout=60)
 
-		###
-		async with BleakClient(device, timeout=60, use_cached=False) as client:
-			services = await client.get_services()
-			for service in services:
-				print('\nservice', service.handle, service.uuid, service.description)
+	# for device in devices:
+	# 	print("...................................................")
+	# 	print(device.address, device.name)
+	# 	#d.details = {'path': '/org/bluez/hci0/dev_DE_BD_78_CF_7E_CB', 'props': {'Address': 'DE:BD:78:CF:7E:CB', 'AddressType': 'random', 'Name': 'ID115Plus HR', 'Alias': 'ID115Plus HR', 'Paired': False, 'Trusted': False, 'Blocked': False, 'LegacyPairing': False, 'Connected': False, 'UUIDs': ['00000af0-0000-1000-8000-00805f9b34fb', '00001800-0000-1000-8000-00805f9b34fb', '00001801-0000-1000-8000-00805f9b34fb'], 'Adapter': '/org/bluez/hci0', 'ServicesResolved': False, 'RSSI': -48}}
+	# 	print("Details ------->: ", device.details)
 
-				characteristics = service.characteristics
+	###
+	async with BleakClient(device, timeout=60, use_cached=False) as client:
+		services = await client.get_services()
+		for service in services:
+			print('\nservice', service.handle, service.uuid, service.description)
 
-				for char in characteristics:
-					print('  characteristic', char.handle, char.uuid, char.description, char.properties)
+			characteristics = service.characteristics
 
-					descriptors = char.descriptors
+			for char in characteristics:
+				print('  characteristic', char.handle, char.uuid, char.description, char.properties)
 
-					for desc in descriptors:
-						print('    descriptor', desc)
+				descriptors = char.descriptors
 
-		####
+				for desc in descriptors:
+					print('    descriptor', desc)
+
+	####
 
 
-asyncio.run(main())
+asyncio.run(main(address="51:E8:E1:F0:14:E7"))
 
 
 
