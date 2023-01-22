@@ -4,8 +4,8 @@ from bleak import BleakScanner, BleakClient
 import logging
 logger = logging.getLogger(__name__)
 
-import bitstruct
-import struct
+# import bitstruct
+# import struct
 
 
 
