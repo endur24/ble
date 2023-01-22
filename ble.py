@@ -17,7 +17,7 @@ async def main():
 		print("...................................................")
 		print(device.address, device.name)
 		#d.details = {'path': '/org/bluez/hci0/dev_DE_BD_78_CF_7E_CB', 'props': {'Address': 'DE:BD:78:CF:7E:CB', 'AddressType': 'random', 'Name': 'ID115Plus HR', 'Alias': 'ID115Plus HR', 'Paired': False, 'Trusted': False, 'Blocked': False, 'LegacyPairing': False, 'Connected': False, 'UUIDs': ['00000af0-0000-1000-8000-00805f9b34fb', '00001800-0000-1000-8000-00805f9b34fb', '00001801-0000-1000-8000-00805f9b34fb'], 'Adapter': '/org/bluez/hci0', 'ServicesResolved': False, 'RSSI': -48}}
-		# print("Details ------->: ", device.details)
+		print("Details ------->: ", device.details)
 
 		###
 		# async with BleakClient(device, timeout=60, use_cached=False) as client:
