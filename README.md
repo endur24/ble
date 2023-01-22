@@ -1,1 +1,1 @@
-# ble
+# ble - BLUETOOTH LOW ENERGY project
